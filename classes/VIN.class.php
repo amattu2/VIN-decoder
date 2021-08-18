@@ -6,12 +6,15 @@
   License GNU Affero General Public License v3.0
 */
 
+// Namespace
+namespace amattu;
+
 // Exception Classes
-class InvalidLengthException extends Exception {}
-class InvalidCharacterException extends Exception {}
-class InvalidYearException extends Exception {}
-class EmptyOperationException extends Exception {}
-class DecodedYearMismatch extends Exception {}
+class InvalidLengthException extends \Exception {}
+class InvalidCharacterException extends \Exception {}
+class InvalidYearException extends \Exception {}
+class EmptyOperationException extends \Exception {}
+class DecodedYearMismatch extends \Exception {}
 
 // Vehicle Identification Number Class
 class VIN {
