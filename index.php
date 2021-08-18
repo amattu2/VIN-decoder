@@ -16,8 +16,8 @@
 // Files
 require(dirname(__FILE__) . "/classes/vin.class.php");
 
-$vin = (new VIN("WBB123B87AFG14984"));
+$vin = new amattu\VIN("WBB123B87AFG14984");
 
-echo  $vin . "<br/>";
-echo  $vin->last() . "<br/>";
+echo $vin . "<br/>";
+echo $vin->last() . "<br/>";
 ?>
