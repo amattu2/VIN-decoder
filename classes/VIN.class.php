@@ -160,6 +160,58 @@ class VIN implements Stringable {
   }
 
   /**
+   * Get VIN WMI selection
+   *
+   * @return string WMI
+   * @throws None
+   * @author Alec M. <https://amattu.com>
+   * @date 2021-08-19
+   */
+  public function get_wmi() : string
+  {
+    return substr($this->VIN, 0, 2);
+  }
+
+  /**
+   * Get VIN VDS selection
+   *
+   * @return string VDS
+   * @throws None
+   * @author Alec M. <https://amattu.com>
+   * @date 2021-08-19
+   */
+  public function get_vds() : string
+  {
+    return substr($this->VIN, 3, 7);
+  }
+
+  /**
+   * Get VIN VIS selection
+   *
+   * @return string VIS
+   * @throws None
+   * @author Alec M. <https://amattu.com>
+   * @date 2021-08-19
+   */
+  public function get_vis() : string
+  {
+    return substr($this->VIN, 9, 16);
+  }
+
+  /**
+   * Get VIN check digit
+   *
+   * @return string check digit
+   * @throws None
+   * @author Alec M. <https://amattu.com>
+   * @date 2021-08-19
+   */
+  public function get_check_digit() : string
+  {
+    return $this->VIN[8];
+  }
+
+  /**
    * Decode VIN to Model Year
    *
    * NOTE:
