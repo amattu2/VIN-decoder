@@ -23,8 +23,7 @@ class VIN {
   protected $Year = 0;
   protected $Country = "";
   protected $Region = "";
-  protected $_Characters = "ABCDEFGHJKLMNPRSTUVWXYZ1234567890";
-  protected $_YearMinimum = 1966;
+  const VALID_CHARACTERS = "ABCDEFGHJKLMNPRSTUVWXYZ1234567890";
 
   /**
    * Class Constructor
@@ -92,8 +91,8 @@ class VIN {
       return false;
 
     // Check Characters
-    for ($i = 0; $i < strlen($vin); $i++)
-      if (strpos($this->_Characters, $vin[$i]) === false)
+    for ($i = 0; $i < strlen($this->VIN); $i++)
+      if (strpos(VIN::VALID_CHARACTERS, $this->VIN[$i]) === false)
         return false;
 
     // Default
