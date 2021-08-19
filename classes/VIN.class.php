@@ -9,13 +9,6 @@
 // Namespace
 namespace amattu;
 
-// Exception Classes
-class InvalidLengthException extends \Exception {}
-class InvalidCharacterException extends \Exception {}
-class InvalidYearException extends \Exception {}
-class EmptyOperationException extends \Exception {}
-class DecodedYearMismatch extends \Exception {}
-
 // Vehicle Identification Number Class
 class VIN implements Stringable {
   // Class Variables
