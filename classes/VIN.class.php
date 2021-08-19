@@ -17,7 +17,7 @@ class EmptyOperationException extends \Exception {}
 class DecodedYearMismatch extends \Exception {}
 
 // Vehicle Identification Number Class
-class VIN {
+class VIN implements Stringable {
   // Class Variables
   protected $VIN = null;
   protected $model_year = null;
