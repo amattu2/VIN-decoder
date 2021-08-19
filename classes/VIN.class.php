@@ -15,6 +15,15 @@ class VIN implements Stringable {
   protected $VIN = null;
   protected $model_year = null;
   const VALID_CHARACTERS = "ABCDEFGHJKLMNPRSTUVWXYZ1234567890";
+  const POSITION_WEIGHTS = Array(8, 7, 6, 5, 4, 3, 2, 10, 0, 9, 8, 7, 6, 5, 4, 3, 2);
+  const TRANSLITERATIONS = Array(
+      "A" => 1, "B" => 2, "C" => 3, "D" => 4,
+      "E" => 5, "F" => 6, "G" => 7, "H" => 8,
+      "J" => 1, "K" => 2, "L" => 3, "M" => 4,
+      "N" => 5, "P" => 7, "R" => 9, "S" => 2,
+      "T" => 3, "U" => 4, "V" => 5, "W" => 6,
+      "X" => 7, "Y" => 8, "Z" => 9
+  );
 
   /**
    * Class Constructor
@@ -82,6 +91,10 @@ class VIN implements Stringable {
   {
     // Check Length
     if (strlen($this->VIN) !== 17)
+      return false;
+
+    // Check Check-Digit
+    if (!$this->validate_check_digit())
       return false;
 
     // Check Characters
@@ -219,5 +232,34 @@ class VIN implements Stringable {
 
     // Default
     return null;
+  }
+
+  /**
+   * Validate VIN check digit
+   *
+   * @return bool valid check digit
+   * @throws None
+   * @author Alec M. <https://amattu.com>
+   * @see https://stackoverflow.com/a/3832074/4149581
+   * @date 2021-08-19
+   */
+  private function validate_check_digit() : bool
+  {
+    // Variables
+    $sum = 0;
+
+    // Iterate through VIN
+    for ($i = 0; $i < strlen($this->VIN); $i++)
+      if (!is_numeric($this->VIN[$i]))
+        $sum += VIN::TRANSLITERATIONS[$this->VIN[$i]] * VIN::POSITION_WEIGHTS[$i];
+      else
+        $sum += $this->VIN[$i] * VIN::POSITION_WEIGHTS[$i];
+
+    // Find Check Digit
+    $checkdigit = $sum % 11;
+    if ($checkdigit == 10)
+      $checkdigit = "X";
+
+    return ($checkdigit == $this->VIN[8]);
   }
 }
