@@ -54,6 +54,31 @@ class VIN implements Stringable {
   );
 
   /**
+   * Array of WMIs
+   *
+   * Region
+   *   Country
+   *     Manufacturer
+   *
+   * @var Array
+   */
+  private $WMI = Array(
+    "North America" => Array(
+      "United States" => Array(
+        "1B" => "Dodge",
+        "1C" => "Chrysler",
+        "1F" => "Ford",
+        "1G" => "General Motors",
+        "1G1" => "Chevrolet",
+        "1G2" => "Pontiac",
+        "1G3" => "Oldsmobile",
+        /* TBD */
+      ),
+      /* TBD */
+    ),
+  );
+
+  /**
    * Class Constructor
    *
    * NOTE:
@@ -289,5 +314,18 @@ class VIN implements Stringable {
       $checkdigit = "X";
 
     return ($checkdigit == $this->VIN[8]);
+  }
+
+  /**
+   * Decode WMI (first 2-3) characters to manufacturer
+   *
+   * @return array vehicle manufacturer
+   * @throws None
+   * @author Alec M. <https://amattu.com>
+   * @date 2021-08-19
+   */
+  private function decode_WMI() : ?array
+  {
+
   }
 }
