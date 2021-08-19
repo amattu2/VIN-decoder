@@ -56,10 +56,10 @@ class VIN implements Stringable {
   /**
    * Return the last N-characters of a VIN
    *
-   * NOTE
-   *  (1) An argument is not required
-   *  if not provided, will return the last
-   *  8 characters of the VIN
+   * NOTE:
+   *   (1) An argument is not required
+   *   if not provided, will return the last
+   *   8 characters of the VIN
    *
    * @param integer N
    * @return string N-characters
