@@ -11,11 +11,39 @@ namespace amattu;
 
 // Vehicle Identification Number Class
 class VIN implements Stringable {
-  // Class Variables
+  /**
+   * VIN passed to constructor
+   *
+   * @var string
+   */
   protected $VIN = null;
+
+  /**
+   * Decoded model year
+   *
+   * @var int
+   */
   protected $model_year = null;
+
+  /**
+   * Valid VIN characters
+   *
+   * @var string
+   */
   const VALID_CHARACTERS = "ABCDEFGHJKLMNPRSTUVWXYZ1234567890";
+
+  /**
+   * VIN positional weights for Check-Digit
+   *
+   * @var array
+   */
   const POSITION_WEIGHTS = Array(8, 7, 6, 5, 4, 3, 2, 10, 0, 9, 8, 7, 6, 5, 4, 3, 2);
+
+  /**
+   * VIN transliterations for Check-Digit
+   *
+   * @var Array
+   */
   const TRANSLITERATIONS = Array(
       "A" => 1, "B" => 2, "C" => 3, "D" => 4,
       "E" => 5, "F" => 6, "G" => 7, "H" => 8,
