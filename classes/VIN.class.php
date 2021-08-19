@@ -265,7 +265,7 @@ class VIN implements Stringable {
   /**
    * Decode a VIN to model year
    *
-   * @return ?int model year (1980-2010)
+   * @return ?int model year (1980-2009)
    * @throws TypeError
    * @author Alec M. <https://amattu.com>
    * @date 2021-08-19
